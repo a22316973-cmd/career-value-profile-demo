@@ -1,0 +1,192 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", "Noto Sans TC", ui-sans-serif, system-ui, sans-serif;
+  --font-serif: "Playfair Display", "Noto Serif TC", serif;
+  
+  --color-bg-primary: #FAF8F4;
+  --color-text-main: #1F2D3D;
+  --color-text-sub: #6B7280;
+  --color-card-white: #FFFFFF;
+  --color-line-light: #E6E2DA;
+  --color-bg-warm: #F1EEE8;
+  --color-bg-sidebar: #F7F5F0;
+  --color-accent-orange: #E9823A;
+  --color-bg-orange-light: #FFF3E8;
+  --color-bg-green-light: #EEF6F1;
+  --color-bg-blue-light: #EEF4FA;
+}
+
+@layer base {
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:ital,wght@0,600;0,700;1,600&family=Noto+Sans+TC:wght@400;500;700&display=swap');
+
+  body {
+    background-color: var(--color-bg-primary);
+    color: var(--color-text-main);
+    font-family: var(--font-sans);
+  }
+
+  h1, h2, h3, h4 {
+    font-weight: 500;
+    letter-spacing: -0.02em;
+  }
+}
+
+.font-serif {
+  font-family: var(--font-serif);
+}
+
+.page-container {
+  width: min(calc(100% - 64px), 1440px);
+  margin-inline: auto;
+}
+
+.header-inner {
+  width: min(calc(100% - 64px), 1440px);
+  margin-inline: auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.initial-data-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(220px, 1fr));
+  gap: 24px;
+  width: 100%;
+  max-width: 1120px;
+  margin-inline: auto;
+}
+
+.journey-layout {
+  width: min(calc(100% - 64px), 1440px);
+  margin-inline: auto;
+  display: grid;
+  grid-template-columns: 260px minmax(640px, 820px) 320px;
+  gap: 32px;
+  justify-content: center;
+  align-items: start;
+}
+
+.chat-column {
+  min-width: 0;
+  width: 100%;
+}
+
+.left-sidebar,
+.right-sidebar {
+  width: 100%;
+  position: sticky;
+  top: 88px;
+  align-self: start;
+  max-height: calc(100vh - 120px);
+  overflow-y: auto;
+}
+
+.result-page {
+  width: min(calc(100% - 64px), 1120px);
+  margin-inline: auto;
+}
+
+@media (max-width: 1279px) {
+  .journey-layout {
+    grid-template-columns: 260px minmax(0, 820px);
+  }
+}
+
+@media (max-width: 1023px) {
+  .journey-layout {
+    width: min(calc(100% - 32px), 100%);
+    grid-template-columns: minmax(0, 820px);
+  }
+
+  .left-sidebar,
+  .right-sidebar {
+    position: static;
+    max-height: none;
+  }
+
+  .initial-data-grid {
+    grid-template-columns: repeat(2, minmax(220px, 1fr));
+  }
+}
+
+@media (max-width: 768px) {
+  .page-container,
+  .header-inner,
+  .result-page {
+    width: min(calc(100% - 32px), 100%);
+  }
+
+  .initial-data-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.nordic-card {
+  background: var(--color-card-white);
+  border: 1px solid var(--color-line-light);
+  border-radius: 12px;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+}
+
+.pill-button {
+  padding: 8px 20px;
+  border-radius: 9999px;
+  border: 1px solid var(--color-line-light);
+  font-size: 0.875rem;
+  transition: all 0.2s ease;
+  cursor: pointer;
+  background: white;
+}
+
+.pill-button:hover {
+  background: var(--color-bg-warm);
+  border-color: var(--color-text-sub);
+}
+
+.pill-button.active {
+  background: var(--color-accent-orange);
+  color: white;
+  border-color: var(--color-accent-orange);
+}
+
+/* Custom scrollbar for a cleaner look */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-line-light);
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-text-sub);
+}
+
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.hide-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.custom-scrollbar::-webkit-scrollbar {
+  width: 4px;
+}
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: transparent;
+}
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: rgba(0,0,0,0.05);
+  border-radius: 10px;
+}
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: rgba(0,0,0,0.1);
+}
